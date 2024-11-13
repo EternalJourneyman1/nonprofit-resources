@@ -11,6 +11,7 @@ const auth = useAuthStore();
       <div class="flex items-center gap-4">
         <router-link to="/search" class="hover:text-blue-200">Search</router-link>
         <template v-if="auth.user">
+          <router-link to="/profile" class="hover:text-blue-200">Profile</router-link>
           <button @click="auth.logout" class="hover:text-blue-200">Logout</button>
         </template>
         <template v-else>
