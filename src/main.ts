@@ -3,6 +3,8 @@ import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router'
 import './style.css'
 import App from './App.vue'
+import { auth } from './firebase/config'
+import { onAuthStateChanged } from 'firebase/auth'
 
 const app = createApp(App)
 const pinia = createPinia()
@@ -24,6 +26,13 @@ const router = createRouter({
   ]
 })
 
-app.use(pinia)
-app.use(router)
-app.mount('#app')
+// Wait for Firebase Auth to initialize before mounting the app
+let appMounted = false
+onAuthStateChanged(auth, () => {
+  if (!appMounted) {
+    app.use(pinia)
+    app.use(router)
+    app.mount('#app')
+    appMounted = true
+  }
+})

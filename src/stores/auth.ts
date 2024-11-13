@@ -1,13 +1,18 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { auth } from '../firebase/config';
-import { GoogleAuthProvider, signInWithPopup, signOut, type User } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, signOut, type User, onAuthStateChanged } from 'firebase/auth';
 import type { FirebaseError } from 'firebase/app';
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref<User | null>(null);
   const error = ref<string | null>(null);
   const loading = ref(false);
+
+  // Initialize auth state listener
+  onAuthStateChanged(auth, (firebaseUser) => {
+    user.value = firebaseUser;
+  });
 
   const loginWithGoogle = async () => {
     try {
