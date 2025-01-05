@@ -8,7 +8,7 @@ const auth = useAuthStore();
   <nav class="bg-blue-600 text-white p-4">
     <div class="container mx-auto flex justify-between items-center">
       <router-link to="/" class="text-xl font-bold">Nonprofit Resources</router-link>
-      <div class="flex items-center gap-4">
+    <div class="flex items-center gap-4">
         <router-link to="/search" class="hover:text-blue-200">Search</router-link>
         <template v-if="auth.user">
           <router-link to="/profile" class="hover:text-blue-200">Profile</router-link>

@@ -5,25 +5,13 @@ import './style.css'
 import App from './App.vue'
 import { auth } from './firebase/config'
 import { onAuthStateChanged } from 'firebase/auth'
+import { routes } from './router/index'
 
 const app = createApp(App)
 const pinia = createPinia()
 const router = createRouter({
   history: createWebHistory(),
-  routes: [
-    {
-      path: '/',
-      component: () => import('./views/Home.vue')
-    },
-    {
-      path: '/search',
-      component: () => import('./views/Search.vue')
-    },
-    {
-      path: '/profile',
-      component: () => import('./views/Profile.vue')
-    }
-  ]
+  routes
 })
 
 // Wait for Firebase Auth to initialize before mounting the app

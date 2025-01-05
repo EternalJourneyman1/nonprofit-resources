@@ -29,9 +29,9 @@ onMounted(() => {
       <div class="bg-white p-8 rounded-lg shadow-md">
         <h2 class="text-2xl font-semibold mb-4">Find Resources for Your Nonprofit</h2>
         <p class="text-gray-600 mb-6">
-          Browse our comprehensive database of nonprofit resources. 
+          Browse our ever-growing database of nonprofit resources. 
           <template v-if="!auth.user">
-            Sign in to rate and save your favorite resources.
+            Sign in to like and save your favorite resources.
           </template>
         </p>
         <div class="flex gap-4">
